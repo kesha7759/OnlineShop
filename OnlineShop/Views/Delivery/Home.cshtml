@@ -1,0 +1,17 @@
+﻿@model OnlineShop.Models.HomeDelivery
+
+<form class="text-center" asp-action="Home" method="post">
+    <p>
+        <label asp-for="Name">Ваше имя</label>
+        <input asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="Phone">Ваш номер телефона</label>
+        <input asp-for="Phone" />
+    </p>
+    <p>
+        <label asp-for="Address">Ваш адрес</label>
+        <input asp-for="Address" />
+    </p>
+    <button class="btn btn-success">Оформить доставку на дом</button>
+</form>

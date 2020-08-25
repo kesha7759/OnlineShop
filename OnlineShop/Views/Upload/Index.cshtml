@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Импорт файлов";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Upload" asp-action="importXML">
+    <div class="form-group">
+        <div class="col-md-10">
+            <h3>Выгрузка товаров</h3>
+            <p>Для того чтобы выолнить выгрузку товаров в базу воспользуйтесь формой ниже:</p>
+            <input type="file" name="xmlFile" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Import" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,17 @@
+﻿@model OnlineShop.Models.MailDelivery
+
+<form class="text-center" asp-action="Mail" method="post">
+    <p>
+        <label asp-for="Name">Ваше имя</label>
+        <input asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="ZIP">Ваш индекс</label>
+        <input asp-for="ZIP" />
+    </p>
+    <p>
+        <label asp-for="Address">Ваш адрес</label>
+        <input asp-for="Address" />
+    </p>
+    <button class="btn btn-success">Оформить доставку на дом</button>
+</form>

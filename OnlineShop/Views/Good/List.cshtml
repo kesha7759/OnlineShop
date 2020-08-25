@@ -1,0 +1,22 @@
+﻿@model GoodListViewModel
+@{
+    ViewData["Title"] = "Список товаров";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ИД Товара</th>
+            <th>Название</th>
+            <th>Стоимость</th>
+            <th>Артикул</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var g in Model.Goods)
+        {
+            @Html.Partial("GoodSummary", g)
+        }
+    </tbody>
+</table>
