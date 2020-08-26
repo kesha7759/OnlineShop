@@ -13,17 +13,32 @@ namespace OnlineShop.Models
             CartLine line = lineCollection
                 .Where(g => g.Good.GoodID == good.GoodID)
                 .FirstOrDefault();
-            if(line == null)
+            if (line == null)
             {
                 lineCollection.Add(new CartLine
                 {
                     Good = good,
                     Quantity = quantity
                 });
-            } else
+            }
+            else
             {
                 line.Quantity += quantity;
             }
+        }
+        public virtual void IncreaseQuantity(Good good, int quantity)
+        {
+            CartLine line = lineCollection
+                .Where(g => g.Good.GoodID == good.GoodID)
+                .FirstOrDefault();
+            line.Quantity += quantity;
+        }
+        public virtual void DecreaseQuantity(Good good, int quantity)
+        {
+            CartLine line = lineCollection
+                .Where(g => g.Good.GoodID == good.GoodID)
+                .FirstOrDefault();
+            line.Quantity -= quantity;
         }
         public virtual void RemoveLine(Good good) =>
             lineCollection.RemoveAll(l => l.Good.GoodID == good.GoodID);

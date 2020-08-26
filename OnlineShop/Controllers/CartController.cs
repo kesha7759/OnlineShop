@@ -25,17 +25,17 @@ namespace OnlineShop.Controllers
                 ReturnUrl = returnUrl
             });
         }
-        public RedirectToActionResult AddToCart (int goodId, string returnUrl)
+        public RedirectToActionResult AddToCart(int goodId, string returnUrl)
         {
             Good good = repository.Goods
                 .FirstOrDefault(g => g.GoodID == goodId);
-            if(good != null)
+            if (good != null)
             {
                 cart.AddItem(good, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-        public RedirectToActionResult RemoveFromCart (int goodId, string returnUrl)
+        public RedirectToActionResult RemoveFromCart(int goodId, string returnUrl)
         {
             Good good = repository.Goods
                 .FirstOrDefault(g => g.GoodID == goodId);
@@ -45,7 +45,26 @@ namespace OnlineShop.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-
+        public RedirectToActionResult IncQuantity(int goodId, string returnUrl)
+        {
+            Good good = repository.Goods
+                .FirstOrDefault(g => g.GoodID == goodId);
+            if (good != null)
+            {
+                cart.IncreaseQuantity(good, 1);
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
+        public RedirectToActionResult DecQuantity(int goodId, string returnUrl)
+        {
+            Good good = repository.Goods
+                .FirstOrDefault(g => g.GoodID == goodId);
+            if (good != null)
+            {
+                cart.DecreaseQuantity(good, 1);
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
 
     }
 }

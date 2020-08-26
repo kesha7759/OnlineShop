@@ -33,6 +33,16 @@ namespace OnlineShop.Models
             base.RemoveLine(good);
             Session.SetJson("Cart", this);
         }
+        public override void DecreaseQuantity(Good good, int quantity)
+        {
+            base.DecreaseQuantity(good, quantity);
+            Session.SetJson("Cart", this);
+        }
+        public override void IncreaseQuantity(Good good, int quantity)
+        {
+            base.IncreaseQuantity(good, quantity);
+            Session.SetJson("Cart", this);
+        }
         public override void Clear()
         {
             base.Clear();

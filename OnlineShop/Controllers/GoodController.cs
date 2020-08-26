@@ -19,21 +19,9 @@ namespace OnlineShop.Controllers
         public ViewResult List() 
             => View(new GoodListViewModel { Goods = repository.Goods.OrderBy(g => g.GoodID)});
 
-        /*public GoodController(ApplicationDbContext context)
-        {
-            _context = context;
-        }*/
-
-        // GET: Goods
-
         public ViewResult Index()
         {
             return View(repository.Goods);
         }
-/*        public async Task<IActionResult> Index()
-        {
-            
-            return View(await _context.Goods.ToListAsync());
-        }*/
     }
 }

@@ -15,8 +15,19 @@
         @foreach (var line in Model.Cart.Lines)
         {
             <tr>
-
-                <td class="text-center">@line.Quantity</td>
+                <td class="text-center">
+                    <form asp-action="IncQuantity" method="post">
+                        <input type="hidden" name="GoodID" value="@line.Good.GoodID" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-info">+</button>
+                    </form>
+                    @line.Quantity
+                    <form asp-action="DecQuantity" method="post">
+                        <input type="hidden" name="GoodID" value="@line.Good.GoodID" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-info">-</button>
+                    </form>
+                </td>
                 <td class="text-left">@line.Good.Name</td>
                 <td class="text-right">@line.Good.Value.ToString("c")</td>
                 <td class="text-right">@((line.Quantity * line.Good.Value).ToString("c"))</td>
