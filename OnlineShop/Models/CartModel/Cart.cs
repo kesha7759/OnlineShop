@@ -38,7 +38,13 @@ namespace OnlineShop.Models
             CartLine line = lineCollection
                 .Where(g => g.Good.GoodID == good.GoodID)
                 .FirstOrDefault();
-            line.Quantity -= quantity;
+            if(line.Quantity == 1)
+            {
+                RemoveLine(good);
+            } else
+            {
+                line.Quantity -= quantity;
+            }
         }
         public virtual void RemoveLine(Good good) =>
             lineCollection.RemoveAll(l => l.Good.GoodID == good.GoodID);
